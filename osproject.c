@@ -15,12 +15,11 @@ int main()
 	//wait_time---->waiting time
 	//p[10]-------->array of processors
 	//i,j --------->interger variables
-	//n------------>no of processors
 	//count-------->for counting purpose
 	//limit-------->Holds the value of n
 	
 	
-	int i,j,n,m,total,qt,count,temp1[10],p[10]={1,2,3,4,5,6,7,8,9,10},at[10],bt[10],wt[10],tat[10],temp,tat_time=0,wait_time=0;
+	int i,j,n,total,qt,count,temp1[10],p[10]={1,2,3,4,5,6,7,8,9,10},at[10],bt[10],wt[10],tat[10],temp,tat_time=0,wait_time=0;
 	float wt_avg=0,tat_avg=0;
 	printf("\t\t\t\t***************ROUND ROBIN SHEDULING*************\n\n");
 	printf("Enter no of process :\t");                                          //prints no of process
