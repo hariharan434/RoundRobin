@@ -24,7 +24,7 @@ int main()
 	//limit-------->Holds the value of n
 	
 	
-	int i,j,n,total,qt,count,temp1[10],p[10]={1,2,3,4,5,6,7,8,9,10},at[10],bt[10],wt[10],tat[10],temp,tat_time=0,wait_time=0;
+	int i,j,n,total,qt,count,temp1[10],p[10]={1,2,3,4,5,6,7,8,9,10},at[10],bt[10],wt[10],tat[10],temp,temp2,tat_time=0,wait_time=0;
 	float wt_avg=0,tat_avg=0;
 	printf("\t\t\t\t***************ROUND ROBIN SHEDULING*************\n\n");
 	printf("Enter no of process :\t");                                          //prints no of process
@@ -40,7 +40,6 @@ int main()
 		scanf(" %d",&at[i]);                                   
 		printf("| Enter Burst time   : ");                                      //prints Brust time
 		scanf("%d",&bt[i]);
-		temp1[i]=bt[i];
 		printf("| \n");
 	}
 	printf("| Enter Quantum time : \t");                                         //prints Quantum time 
@@ -51,10 +50,35 @@ int main()
 	sleep(2);
 	printf("While we are loading......");
 	sleep(2);
+	for(i=0;i<n;i++)
+	{
+		for(j=0;j<n;j++)
+		{
+			if(at[i]<at[j])
+			{
+			temp2=at[i];
+			at[i]=at[j];                                                        //it will sort process according to the arrival time
+			at[j]=temp2;
+			temp2=bt[i];
+			bt[i]=bt[j];
+			bt[j]=temp2;
+		}
+	}
+}
 	system("CLS");
 	printf("Performing Sheduling............");
 	sleep(2);
-	printf("\nGetting Result:-\n");
+	printf("\n\n\tProcess Was Sorted According To Arrival Time");
+    printf("\n\t---------------------------------------------------\n");
+	printf("\t| process_id\t| Arrival time\t  | Burst time\t  |\n");
+    printf("\t---------------------------------------------------\n");
+    for(i=0;i<n;i++)
+    {
+	printf("\t| p[%d]\t\t|   %d\t\t  |  \t%d\t  |\n",i+1,at[i],bt[i]);
+	temp1[i]=bt[i];
+    }
+    printf("\t---------------------------------------------------\n");
+	printf("\n\tGetting Result:-\n");
 	sleep(2);
 	printf("\n\tQuantum time is: %d\n",qt);                                           //prints quantum time
 	sleep(1);         
@@ -182,3 +206,4 @@ int main()
 	}
 	return 0;
 }
+	
